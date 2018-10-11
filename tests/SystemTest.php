@@ -19,16 +19,33 @@ class SystemTest extends TestCase
     {
         parent::setUp();
 
-        $this->artisan('migrate:fresh');
+        $this->cleanUpTenancy();
 
         Notification::fake();
     }
 
     public function tearDown()
     {
-        $this->artisan('migrate:fresh');
+        $this->cleanUpTenancy();
 
         parent::tearDown();
+    }
+
+    protected function cleanUpTenancy()
+    {
+        config(['database.default' => 'system']);
+
+        Hostname::all()->each(function ($hostname) {
+            app(HostnameRepository::class)->delete($hostname);
+        });
+
+        Website::all()->each(function ($website) {
+            app(WebsiteRepository::class)->delete($website);
+        });
+
+        app(Connection::class)->system()->rollback();
+
+        $this->artisan('migrate:fresh');
     }
 
     protected function signIn($user = null)
