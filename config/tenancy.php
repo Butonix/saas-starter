@@ -25,10 +25,10 @@ return [
          */
 
         // Must implement \Hyn\Tenancy\Contracts\Hostname
-        'hostname' => \Hyn\Tenancy\Models\Hostname::class,
+        'hostname' => \App\Models\System\Hostname::class,
 
         // Must implement \Hyn\Tenancy\Contracts\Website
-        'website' => \Hyn\Tenancy\Models\Website::class
+        'website' => \App\Models\System\Website::class,
     ],
     /**
      * The package middleware. Removing a middleware here will disable it.
@@ -105,7 +105,7 @@ return [
          * @see
          * @info set to true to enable.
          */
-        'auto-delete-tenant-directory' => false,
+        'auto-delete-tenant-directory' => true,
 
         /**
          * Time to cache websites in minutes. Set to false to disable.
@@ -305,7 +305,7 @@ return [
          * Set to true to flush all global routes before setting the routes from the
          * tenants.php routes file.
          */
-        'replace-global' => false,
+        'replace-global' => true,
     ],
 
     /**

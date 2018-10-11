@@ -20,6 +20,7 @@ class CreateSystemUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('set_up')->default(false);
             $table->timestamps();
         });
     }
