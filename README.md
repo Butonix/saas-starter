@@ -15,3 +15,5 @@ Heads up: You need a Laravel Nova license in order to use this app. Purchase one
 
 Secure your site with `valet secure saas-starter`
 Now you can visit https://saas-starter.test
+
+Info: Password resets are not working yet, because of a custom Nova guard: https://github.com/laravel/nova-issues/issues/43
