@@ -27,6 +27,8 @@ class CreateSystemWebsites extends AbstractMigration
 
             $table->string('uuid');
 
+            $table->unsignedInteger('user_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });
