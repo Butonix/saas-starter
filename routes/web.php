@@ -21,5 +21,8 @@ Route::group(['namespace' => 'System'], function () {
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
+    Route::post('setup', 'UsersController@setup');
+    Route::get('setup', 'UsersController@showSetup')->name('setup');
+
     Route::get('home', 'HomeController@index')->name('home');
 });
