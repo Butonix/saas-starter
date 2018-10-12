@@ -13,8 +13,7 @@ class EnsureTenantExists
             return $next($request);
         }
 
-        if ($tenant = app(Environment::class)->tenant()) {
-            config(['app.url' => 'https://' . $tenant->hostnames->first()->fqdn]);
+        if (app(Environment::class)->tenant()) {
             return $next($request);
         }
 
